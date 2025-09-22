@@ -20,6 +20,7 @@ TEACHING ORDER:
 5. Add handleSubmit function
 6. Add basic validation
 7. Add checkbox as bonus
+8. Install and use UUID for unique IDs
 
 KEY CONCEPTS:
 - Form state is LOCAL to this component
@@ -30,6 +31,7 @@ KEY CONCEPTS:
 
 import React, { useState } from 'react';
 import { Plus } from 'lucide-react';
+import { v4 as uuidv4 } from 'uuid';
 
 function AddPokemonForm({ onAddPokemon }) {
   // FORM STATE
@@ -84,7 +86,7 @@ function AddPokemonForm({ onAddPokemon }) {
     
     // CREATE new pokemon object with unique ID
     const newPokemon = {
-      id: Date.now(),  // Simple ID generation (use UUID in production)
+      id: uuidv4(),  // Generate unique UUID for the Pokemon
       name: formData.name,
       type: formData.type,
       level: parseInt(formData.level), // Convert to number

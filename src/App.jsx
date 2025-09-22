@@ -27,6 +27,7 @@ KEY CONCEPTS TO EMPHASIZE:
 import React, { useState } from 'react';
 import PokemonCard from './components/PokemonCard';
 import AddPokemonForm from './components/AddPokemonForm';
+import { v4 as uuidv4 } from 'uuid';
 import './App.css';
 
 function App() {
@@ -35,22 +36,23 @@ function App() {
   // Explain why state goes in the parent component
   const [pokemonList, setPokemonList] = useState([
     // SAMPLE DATA - start with this so students can see components working
+    // INSTRUCTOR NOTE: Using UUIDs for consistent ID format throughout the app
     {
-      id: 1,
+      id: uuidv4(),
       name: 'Pikachu',
       type: 'Electric',
       level: 25,
       trainer: 'Ash Ketchum'
     },
     {
-      id: 2,
+      id: uuidv4(),
       name: 'Charizard', 
       type: 'Fire',
       level: 78,
       trainer: 'Ash Ketchum'
     },
     {
-      id: 3,
+      id: uuidv4(),
       name: 'Blastoise',
       type: 'Water', 
       level: 65,
@@ -113,7 +115,7 @@ function App() {
 
       {/* FOOTER */}
       <footer className="app-footer">
-        <p>Built with React!</p>
+        <p>Built with React - Learning Components, Props, and State!</p>
       </footer>
     </div>
   );

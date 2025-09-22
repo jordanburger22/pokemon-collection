@@ -30,7 +30,7 @@ This guide provides a step-by-step approach for teaching React fundamentals thro
    npm create vite@latest pokemon-collection -- --template react
    cd pokemon-collection
    npm install
-   npm install lucide-react
+   npm install lucide-react uuid
    npm run dev
    ```
 
@@ -88,9 +88,11 @@ import React, { useState } from 'react';
 
 #### Step 2.2: Add Pokemon State (10 minutes)
 ```javascript
+import { v4 as uuidv4 } from 'uuid';
+
 const [pokemonList, setPokemonList] = useState([
   {
-    id: 1,
+    id: uuidv4(),
     name: 'Pikachu',
     type: 'Electric',
     level: 25,
@@ -103,6 +105,7 @@ const [pokemonList, setPokemonList] = useState([
 - **State vs Variables:** Regular variables don't trigger re-renders
 - **Array Destructuring:** `[value, setter] = useState(initialValue)`
 - **Naming Convention:** `[something, setSomething]`
+- **UUID for IDs:** Use uuidv4() for unique identifiers instead of simple numbers
 
 #### Step 2.3: Display Pokemon Count (10 minutes)
 ```javascript
@@ -316,11 +319,13 @@ const handleChange = (event) => {
 
 #### Step 5.5: Add handleSubmit (5 minutes)
 ```javascript
+import { v4 as uuidv4 } from 'uuid';
+
 const handleSubmit = (event) => {
   event.preventDefault();
   
   const newPokemon = {
-    id: Date.now(),
+    id: uuidv4(), // Generate unique UUID instead of Date.now()
     ...formData
   };
   
@@ -336,10 +341,15 @@ const handleSubmit = (event) => {
 };
 ```
 
+**Key Teaching Points:**
+- **UUID Generation:** Use uuidv4() for truly unique IDs
+- **Why not Date.now():** Multiple rapid submissions could create duplicate IDs
+
 ### Teaching Notes
 - **preventDefault:** Why we need it
 - **Form Reset:** Why and how to reset after submission
 - **Debug with State:** Show the debug info section to visualize state
+- **UUID Benefits:** Explain why UUIDs are better than timestamps for IDs
 
 ---
 
@@ -545,4 +555,3 @@ pokemon-collection/
 - React's declarative nature
 - Component reusability
 - State management patterns
-- Next steps: Context, custom hooks, libraries# pokemon-collection
